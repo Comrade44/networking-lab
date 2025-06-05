@@ -1,19 +1,19 @@
-resource "azurerm_resource_group" "rg-uks-compa-01" {
-  name     = "rg-uks-compa-01"
+resource "azurerm_resource_group" "rg-uks-compa-vm-01" {
+  name     = "rg-uks-compa-vm-01"
   location = "uksouth"
 }
 
 resource "azurerm_public_ip" "pip-uks-compa-01" {
   name                = "pip-uks-compa-01"
-  location            = azurerm_resource_group.rg-uks-compa-01.location
-  resource_group_name = azurerm_resource_group.rg-uks-compa-01.name
+  location            = azurerm_resource_group.rg-uks-compa-vm-01.location
+  resource_group_name = azurerm_resource_group.rg-uks-compa-vm-01.name
   allocation_method   = "Static"
 }
 
 resource "azurerm_network_interface" "nic-uks-compa-01" {
   name                = "nic-uks-compa-01"
-  location            = azurerm_resource_group.rg-uks-compa-01.location
-  resource_group_name = azurerm_resource_group.rg-uks-compa-01.resource_group_name
+  location            = azurerm_resource_group.rg-uks-compa-vm-01.location
+  resource_group_name = azurerm_resource_group.rg-uks-compa-vm-01.resource_group_name
   ip_configuration {
     name                          = "public"
     subnet_id                     = azurerm_subnet.vnet-uks-compa-01-snet-01.id
@@ -25,7 +25,7 @@ resource "azurerm_network_interface" "nic-uks-compa-01" {
 resource "azurerm_linux_virtual_machine" "vm-uks-compa-01" {
   name = "vm-uks-compa-01"
   location = azurerm_resource_group.vm-uks-compa-01.location
-  resource_group_name = azurerm_resource_group.rg-uks-compa-01.name
+  resource_group_name = azurerm_resource_group.rg-uks-compa-vm-01.name
   network_interface_ids = [azurerm_network_interface.nic-uks-compa-01.id]
   size = "Standard_B1s"
   os_disk {
