@@ -39,3 +39,10 @@ resource "azurerm_network_security_group" "nsg-uks-compa-01" {
     destination_address_prefix = "*"
   }
 }
+
+resource "azurerm_virtual_network_peering" "compa-uks-hub-uks" {
+  name                      = "compa-uks-hub-uks"
+  resource_group_name       = azurerm_resource_group.rg-uks-compa-net-01.name
+  virtual_network_name      = azurerm_virtual_network.vnet-uks-compa-01.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet-uks-hub-01.id
+}
