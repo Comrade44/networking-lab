@@ -27,7 +27,7 @@ resource "azurerm_network_security_group" "nsg-uks-compa-01" {
   resource_group_name = azurerm_resource_group.rg-uks-compa-net-01.name
   location            = azurerm_resource_group.rg-uks-compa-net-01.location
 
-  security_rule = {
+  security_rule {
     name                       = "allow-ssh"
     priority                   = 100
     direction                  = "Inbound"
