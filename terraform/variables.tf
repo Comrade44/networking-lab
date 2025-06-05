@@ -1,4 +1,4 @@
 variable "ssh_public_key" {
-  type = string
+  type        = string
   description = "The public ssh key of the lab user"
 }
