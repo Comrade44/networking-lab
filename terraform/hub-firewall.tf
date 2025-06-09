@@ -23,6 +23,11 @@ resource "azurerm_firewall" "azfw-uks-hub-01" {
     subnet_id            = azurerm_subnet.vnet-uks-hub-01-snet-azfw.id
     public_ip_address_id = azurerm_public_ip.pip-uks-hub-01.id
   }
+  management_ip_configuration {
+    name                 = "management"
+    subnet_id            = azurerm_subnet.vnet-uks-hub-01-snet-azfw.id
+    public_ip_address_id = azurerm_public_ip.pip-uks-hub-01.id
+  }
 }
 
 resource "azurerm_route_table" "compa_default_route" {
