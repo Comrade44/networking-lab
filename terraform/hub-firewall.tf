@@ -19,6 +19,14 @@ resource "azurerm_public_ip" "pip-uks-hub-01" {
   allocation_method   = "Static"
 }
 
+
+resource "azurerm_public_ip" "pip-uks-hub-02" {
+  name                = "pip-uks-hub-02"
+  location            = azurerm_resource_group.rg-uks-hub-01.location
+  resource_group_name = azurerm_resource_group.rg-uks-hub-01.name
+  allocation_method   = "Static"
+}
+
 resource "azurerm_firewall" "azfw-uks-hub-01" {
   name                = "azfw-uks-hub-01"
   location            = azurerm_resource_group.rg-uks-hub-01.location
@@ -33,7 +41,7 @@ resource "azurerm_firewall" "azfw-uks-hub-01" {
   management_ip_configuration {
     name                 = "management"
     subnet_id            = azurerm_subnet.vnet-uks-hub-01-snet-azfwmgmt.id
-    public_ip_address_id = azurerm_public_ip.pip-uks-hub-01.id
+    public_ip_address_id = azurerm_public_ip.pip-uks-hub-02.id
   }
 }
 
