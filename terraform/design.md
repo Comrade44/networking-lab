@@ -19,3 +19,6 @@ With a public IP address attached to the vms, curl https://ipinfo.io will return
 ## NAT Gateway outbound connectivity
 NAT gateway provides IP proxy and NAT services for outbound internet connectivity. NAT gateways are created per-vnet, and cannot be used from a peered vnet.
 Applying the config in the file outbound-nat.tf, logging into the VMs via Bastion and running curl https://ipinfo.io will return the IP address of the NAT gateway for that subnet.
+
+## Azure Firewall without NAT for outbound connectivity
+Adding an Azure Firewall to the hub network and a UDR to the spokes forces internet traffic for the spoke VMs to be routed via the Azure Firewall.
