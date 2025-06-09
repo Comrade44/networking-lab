@@ -3,12 +3,12 @@ resource "azurerm_resource_group" "rg-uks-compb-vm-01" {
   location = "uksouth"
 }
 
-resource "azurerm_public_ip" "pip-uks-compb-01" {
-  name                = "pip-uks-compb-01"
-  location            = azurerm_resource_group.rg-uks-compb-vm-01.location
-  resource_group_name = azurerm_resource_group.rg-uks-compb-vm-01.name
-  allocation_method   = "Static"
-}
+#resource "azurerm_public_ip" "pip-uks-compb-01" {
+#  name                = "pip-uks-compb-01"
+#  location            = azurerm_resource_group.rg-uks-compb-vm-01.location
+#  resource_group_name = azurerm_resource_group.rg-uks-compb-vm-01.name
+#  allocation_method   = "Static"
+#}
 
 resource "azurerm_network_interface" "nic-uks-compb-01" {
   name                = "nic-uks-compb-01"
