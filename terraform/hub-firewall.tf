@@ -25,12 +25,14 @@ resource "azurerm_route_table" "compa_default_route" {
   location            = azurerm_resource_group.rg-uks-compa-net-01.location
   resource_group_name = azurerm_resource_group.rg-uks-compa-net-01.name
 
-  route = {
+  route = [
+    {
     name                   = "default"
     address_prefixes       = "0.0.0.0/0"
     next_hop_type          = "VirtualAppliance"
     next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
-  }
+    }
+  ]
 }
 
 resource "azurerm_route_table" "compb_default_route" {
@@ -38,10 +40,12 @@ resource "azurerm_route_table" "compb_default_route" {
   location            = azurerm_resource_group.rg-uks-compb-net-01.location
   resource_group_name = azurerm_resource_group.rg-uks-compb-net-01.name
 
-  route = {
+  route = [
+    {
     name                   = "default"
     address_prefixes       = "0.0.0.0/0"
     next_hop_type          = "VirtualAppliance"
     next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
-  }
+    }
+  ]
 }
