@@ -6,12 +6,16 @@ This is a single region hub and spoke configuration that uses a NAT gateway and 
 ## Virtual Networks
 There are three virtual networks, one hub and two spokes. Each has a single subnet. The two spokes are peered bi-directionally to the hub.
 
+## routing
+Routing between virtual networks is not possible by default
+
 ## Bastion
 Azure Bastion is configured and connected to the hub network to allow remote access to the VMs.
 
 ## Default outbound connectivity
 https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access
-With a public IP address attached to the vm, curl https://ipinfo.io will return the IP of the public IP.
+With a public IP address attached to the vms, curl https://ipinfo.io will return the IP of the public IP.
 
 ## NAT Gateway outbound connectivity
 NAT gateway provides IP proxy and NAT services for outbound internet connectivity. NAT gateways are created per-vnet, and cannot be used from a peered vnet.
+Applying the config in the file outbound-nat.tf, logging into the VMs via Bastion and running curl https://ipinfo.io will return the IP address of the NAT gateway for that subnet.
