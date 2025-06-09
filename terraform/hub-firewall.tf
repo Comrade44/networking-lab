@@ -28,7 +28,7 @@ resource "azurerm_route_table" "compa_default_route" {
   route = [
     {
     name                   = "default"
-    address_prefixes       = "0.0.0.0/0"
+    address_prefix       = "0.0.0.0/0"
     next_hop_type          = "VirtualAppliance"
     next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
     }
@@ -43,7 +43,7 @@ resource "azurerm_route_table" "compb_default_route" {
   route = [
     {
     name                   = "default"
-    address_prefixes       = "0.0.0.0/0"
+    address_prefix       = "0.0.0.0/0"
     next_hop_type          = "VirtualAppliance"
     next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
     }
