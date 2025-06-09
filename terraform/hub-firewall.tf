@@ -27,12 +27,12 @@ resource "azurerm_firewall" "azfw-uks-hub-01" {
   sku_tier            = "Basic"
   ip_configuration {
     name                 = "hub"
-    subnet_id            = azurerm_subnet.vnet-uks-hub-01-snet-azfwmgmt.id
+    subnet_id            = azurerm_subnet.vnet-uks-hub-01-snet-azfw.id
     public_ip_address_id = azurerm_public_ip.pip-uks-hub-01.id
   }
   management_ip_configuration {
     name                 = "management"
-    subnet_id            = azurerm_subnet.vnet-uks-hub-01-snet-azfw.id
+    subnet_id            = azurerm_subnet.vnet-uks-hub-01-snet-azfwmgmt.id
     public_ip_address_id = azurerm_public_ip.pip-uks-hub-01.id
   }
 }
