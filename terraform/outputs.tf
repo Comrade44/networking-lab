@@ -1,3 +1,3 @@
 output "vnet" {
-  value = azurerm_virtual_network.vnet-uks-compa-01
+  value = {for x in (azurerm_virtual_network.vnet-uks-compa-01) : x.name => x}
 }
