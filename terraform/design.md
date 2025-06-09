@@ -8,3 +8,7 @@ There are three virtual networks, one hub and two spokes. Each has a single subn
 
 ## Bastion
 Azure Bastion is configured and connected to the hub network to allow remote access to the VMs.
+
+## Default outbound connectivity
+https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access
+With a public IP address attached to the vm, curl https://ipinfo.io will return the IP of the public IP.
