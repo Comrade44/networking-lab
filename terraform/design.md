@@ -21,4 +21,4 @@ NAT gateway provides IP proxy and NAT services for outbound internet connectivit
 Applying the config in the file outbound-nat.tf, logging into the VMs via Bastion and running curl https://ipinfo.io will return the IP address of the NAT gateway for that subnet.
 
 ## Azure Firewall without NAT for outbound connectivity
-Adding an Azure Firewall to the hub network and a UDR to the spokes forces internet traffic for the spoke VMs to be routed via the Azure Firewall.
+Adding an Azure Firewall to the hub network and a UDR to the spokes (by applying the config in bub-firewall.tf) forces internet traffic for the spoke VMs to be routed via the Azure Firewall.

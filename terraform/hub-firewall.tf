@@ -18,6 +18,11 @@ resource "azurerm_firewall" "azfw-uks-hub-01" {
   resource_group_name = azurerm_resource_group.rg-uks-hub-01.name
   sku_name            = "AZFW_VNet"
   sku_tier            = "Basic"
+  ip_configuration {
+    name                 = "hub"
+    subnet_id            = azurerm_subnet.vnet-uks-hub-01-snet-azfw.id
+    public_ip_address_id = azurerm_public_ip.pip-uks-hub-01.id
+  }
 }
 
 resource "azurerm_route_table" "compa_default_route" {
@@ -27,10 +32,10 @@ resource "azurerm_route_table" "compa_default_route" {
 
   route = [
     {
-    name                   = "default"
-    address_prefix       = "0.0.0.0/0"
-    next_hop_type          = "VirtualAppliance"
-    next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
+      name                   = "default"
+      address_prefix         = "0.0.0.0/0"
+      next_hop_type          = "VirtualAppliance"
+      next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
     }
   ]
 }
@@ -42,10 +47,10 @@ resource "azurerm_route_table" "compb_default_route" {
 
   route = [
     {
-    name                   = "default"
-    address_prefix       = "0.0.0.0/0"
-    next_hop_type          = "VirtualAppliance"
-    next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
+      name                   = "default"
+      address_prefix         = "0.0.0.0/0"
+      next_hop_type          = "VirtualAppliance"
+      next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
     }
   ]
 }
