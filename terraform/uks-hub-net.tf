@@ -23,3 +23,10 @@ resource "azurerm_subnet" "bastion_subnet" {
   virtual_network_name = azurerm_virtual_network.vnet-uks-hub-01.name
   address_prefixes     = ["10.0.5.0/24"]
 }
+
+resource "azurerm_nat_gateway" "ngw-uks-hub-01" {
+  name                = "ngw-uks-hub-01"
+  location            = azurerm_resource_group.rg-uks-hub-01.location
+  resource_group_name = azurerm_resource_group.rg-uks-hub-01.name
+  sku_name            = "Standard"
+}

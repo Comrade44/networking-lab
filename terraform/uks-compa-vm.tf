@@ -18,7 +18,7 @@ resource "azurerm_network_interface" "nic-uks-compa-01" {
     name                          = "public"
     subnet_id                     = azurerm_subnet.vnet-uks-compa-01-snet-01.id
     private_ip_address_allocation = "Dynamic"
-#    public_ip_address_id          = azurerm_public_ip.pip-uks-compa-01.id
+    #    public_ip_address_id          = azurerm_public_ip.pip-uks-compa-01.id
   }
 }
 
