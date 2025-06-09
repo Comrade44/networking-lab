@@ -12,3 +12,6 @@ Azure Bastion is configured and connected to the hub network to allow remote acc
 ## Default outbound connectivity
 https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access
 With a public IP address attached to the vm, curl https://ipinfo.io will return the IP of the public IP.
+
+## NAT Gateway outbound connectivity
+NAT gateway provides IP proxy and NAT services for outbound internet connectivity. NAT gateways are created per-vnet, and cannot be used from a peered vnet.
