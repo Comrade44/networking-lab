@@ -60,6 +60,13 @@ resource "azurerm_route_table" "compa_default_route" {
   ]
 }
 
+resource "azurerm_subnet_route_table_association" "compa_routes" {
+  for_each = { for x in(azurerm_virtual_network.vnet-uks-compa-01.subnet) : x.name => x }
+
+  route_table_id = azurerm_route_table.compa_default_route.id
+  subnet_id      = each.value.id
+}
+
 resource "azurerm_route_table" "compb_default_route" {
   name                = "compb-default-route"
   location            = azurerm_resource_group.rg-uks-compb-net-01.location
@@ -73,4 +80,11 @@ resource "azurerm_route_table" "compb_default_route" {
       next_hop_in_ip_address = azurerm_firewall.azfw-uks-hub-01.ip_configuration[0].private_ip_address
     }
   ]
+}
+
+resource "azurerm_subnet_route_table_association" "compb_routes" {
+  for_each = { for x in(azurerm_virtual_network.vnet-uks-compb-01.subnet) : x.name => x }
+
+  route_table_id = azurerm_route_table.compb_default_route.id
+  subnet_id      = each.value.id
 }
