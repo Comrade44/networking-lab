@@ -1,7 +1,7 @@
 resource "azurerm_nat_gateway" "ngw-uks-hub-01" {
   name                = "ngw-uks-hub-01"
-  location            = azurerm_resource_group.rg-uks-hub-net-01.location
-  resource_group_name = azurerm_resource_group.rg-uks-hub-net-01.name
+  location            = azurerm_resource_group.rg-uks-hub-01.location
+  resource_group_name = azurerm_resource_group.rg-uks-hub-01.name
   sku_name            = "Standard"
 }
 
