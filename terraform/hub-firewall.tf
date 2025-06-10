@@ -84,3 +84,13 @@ resource "azurerm_subnet_route_table_association" "compb_routes" {
   route_table_id = azurerm_route_table.compb_default_route.id
   subnet_id      = azurerm_subnet.vnet-uks-compb-01-snet-01.id
 }
+
+resource "azurerm_monitor_diagnostic_setting" "fw-logs" {
+  target_resource_id             = azurerm_firewall.azfw-uks-hub-01.id
+  log_analytics_workspace_id     = azurerm_log_analytics_workspace.law-uks-mon-01.id
+  log_analytics_destination_type = "Dedicated"
+  name                           = "azfw-logs"
+  enabled_log {
+    category_group = "allLogs"
+  }
+}
