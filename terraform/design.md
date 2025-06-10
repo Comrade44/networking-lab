@@ -22,3 +22,4 @@ Applying the config in the file outbound-nat.tf, logging into the VMs via Bastio
 
 ## Azure Firewall without NAT for outbound connectivity
 Adding an Azure Firewall to the hub network and a UDR to the spokes (by applying the config in bub-firewall.tf) forces internet traffic for the spoke VMs to be routed via the Azure Firewall.
+Basic SKU cannot use Firewall Manager to deploy policy rule sets.
