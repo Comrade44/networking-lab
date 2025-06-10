@@ -61,10 +61,8 @@ resource "azurerm_route_table" "compa_default_route" {
 }
 
 resource "azurerm_subnet_route_table_association" "compa_routes" {
-  for_each = { for x in(azurerm_virtual_network.vnet-uks-compa-01.subnet) : x.name => x }
-
   route_table_id = azurerm_route_table.compa_default_route.id
-  subnet_id      = each.value.id
+  subnet_id      = azurerm_subnet.vnet-uks-compa-01-snet-01.id
 }
 
 resource "azurerm_route_table" "compb_default_route" {
@@ -83,8 +81,6 @@ resource "azurerm_route_table" "compb_default_route" {
 }
 
 resource "azurerm_subnet_route_table_association" "compb_routes" {
-  for_each = { for x in(azurerm_virtual_network.vnet-uks-compb-01.subnet) : x.name => x }
-
   route_table_id = azurerm_route_table.compb_default_route.id
-  subnet_id      = each.value.id
+  subnet_id      = azurerm_subnet.vnet-uks-compb-01-snet-01.id
 }
