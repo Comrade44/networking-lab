@@ -55,7 +55,7 @@ resource "azurerm_firewall_network_rule_collection" "spoke-networks" {
   rule {
     name = "allow-http-https-outbound"
     source_addresses = [ azurerm_subnet.vnet-uks-compa-01-snet-01.address_prefixes[0], azurerm_subnet.vnet-uks-compb-01-snet-01.address_prefixes[0] ]
-    protocols = "Any"
+    protocols = ["Any"]
     destination_ports = ["80", "443"]
     destination_addresses = [ "*" ]
   }
