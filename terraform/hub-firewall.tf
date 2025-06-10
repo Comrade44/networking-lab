@@ -93,4 +93,7 @@ resource "azurerm_monitor_diagnostic_setting" "fw-logs" {
   enabled_log {
     category_group = "allLogs"
   }
+  enabled_metric {
+    category_group = "allMetrics"
+  }
 }
