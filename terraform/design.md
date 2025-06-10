@@ -26,3 +26,5 @@ Basic SKU cannot use Firewall Manager to deploy policy rule sets, and all traffi
 
 ## Inter-spoke network connectivity
 With the Azure firewall set up in the hub vnet, enabling the option "Allow 'vnet-a' to receive forwarded traffic from 'vnet-b" on all peerings will allow the spokes to communicate. This can be verified by installing and running Apache on the VM in spoke B, and using curl to connect to the web server from the VM in spoke A.
+
+## NAT gateway in front of Azure Firewall for increased SNAT 
