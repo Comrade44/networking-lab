@@ -7,5 +7,7 @@ VWAN is an Azure service that makes it simpler to manage network topologies, for
 ## Components
 The two main components are the virtual WAN, and the VWAN hub. Hubs are Microsoft managed VNets that exist in each region in which you want connectivity, and are associated with the VWAN component, which is the overall collection of networks.
 
-## 
+## Spoke-to-spoke communication - single region
+
+## Spoke-to-spoke communication - multi-region
 
