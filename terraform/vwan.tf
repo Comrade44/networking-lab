@@ -18,7 +18,7 @@ resource "azurerm_virtual_hub" "vhub-uks-net-01" {
 }
 
 resource "azurerm_virtual_hub_connection" "spokea-vhub-uks" {
-  name = "spokea-vhub-uks"
-  virtual_hub_id = azurerm_virtual_hub.vhub-uks-net-01.id
-  remote_virtual_network_id = azurerm_virtual_network.vnet-uks-compa-01.id
+  name                      = "spokea-vhub-uks"
+  virtual_hub_id            = azurerm_virtual_hub.vhub-uks-net-01.id
+  remote_virtual_network_id = azurerm_virtual_network.vnet-uks-spokea-01.id
 }
