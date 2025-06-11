@@ -29,4 +29,4 @@ With the Azure firewall set up in the hub vnet, enabling the option "Allow 'vnet
 
 ## NAT gateway in front of Azure Firewall for increased SNAT capability
 https://learn.microsoft.com/en-us/azure/firewall/integrate-with-nat-gateway
-Azure firewall supports up to 250 public IP addresses, each with up to 2496 SNAT ports. For larger scale solutions such as AVD, using a NAT gateway with Azure firewall allows up to 16 public IP addresses each with 64,512 SNAT ports. This will provide the same amount of outbound ports with fewer Public IPs to manage.
+Azure firewall supports up to 250 public IP addresses, each with up to 2496 SNAT ports. For larger scale solutions such as AVD, using a NAT gateway with Azure firewall allows up to 16 public IP addresses each with 64,512 SNAT ports. This will provide the same amount of outbound ports with fewer Public IPs to manage. Applying the config in hub-firewall-nat-gw.tf will add this functionality.
