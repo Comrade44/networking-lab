@@ -15,6 +15,7 @@ resource "azurerm_virtual_hub" "vhub-uks-net-01" {
   resource_group_name = azurerm_resource_group.rg-uks-net-01.name
   sku                 = "Standard"
   virtual_wan_id      = azurerm_virtual_wan.vwan-uks-net-01.id
+  address_prefix      = "10.0.0.0/16"
 }
 
 resource "azurerm_virtual_hub_connection" "spokea-vhub-uks" {
