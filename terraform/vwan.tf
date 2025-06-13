@@ -23,3 +23,15 @@ resource "azurerm_virtual_hub_connection" "spokea-vhub-uks" {
   virtual_hub_id            = azurerm_virtual_hub.vhub-uks-net-01.id
   remote_virtual_network_id = azurerm_virtual_network.vnet-uks-spokea-01.id
 }
+
+resource "azurerm_virtual_hub_connection" "spokeb-vhub-uks" {
+  name                      = "spokeb-vhub-uks"
+  virtual_hub_id            = azurerm_virtual_hub.vhub-uks-net-01.id
+  remote_virtual_network_id = azurerm_virtual_network.vnet-uks-spokeb-01.id
+}
+
+resource "azurerm_virtual_hub_connection" "bastion-vhub-uks" {
+  name                      = "bastion-vhub-uks"
+  virtual_hub_id            = azurerm_virtual_hub.vhub-uks-net-01.id
+  remote_virtual_network_id = azurerm_virtual_network.vnet-uks-bastion-01.id
+}
