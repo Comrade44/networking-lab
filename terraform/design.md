@@ -8,7 +8,7 @@ VWAN is an Azure service that makes it simpler to manage network topologies, for
 The two main components are the virtual WAN, and the VWAN hub. Hubs are Microsoft managed VNets that exist in each region in which you want connectivity, and are associated with the VWAN component, which is the overall collection of networks.
 
 ## Spoke-to-spoke communication - single region
-Deploying a VWAN hub and adding a virtual hub connection automatically creates peerings between the hub and the spoke. Similarly to a traditional hub-and-spoke deployment, the VWAN hub acts as a relay allowing communication between Vnets, and traffic transit still needs to be enabled on the peerings.
+Deploying a VWAN hub and adding a virtual hub connection for each vnets automatically creates peerings between the hub and the vnets. Similarly to a traditional hub-and-spoke deployment, the VWAN hub acts as a relay allowing communication between Vnets, and traffic transit still needs to be enabled on the peerings.
 
 ## Bastion in VWAN
 Bastion cannot be deployed directly to a VWAN hub. A separate vnet and subnet is needed.
