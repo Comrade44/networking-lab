@@ -18,7 +18,21 @@ resource "azurerm_bastion_host" "bas-uks-bas-01" {
 
   ip_configuration {
     name                 = "configuration"
-    subnet_id            = azurerm_subnet.bastion_subnet.id
+    subnet_id            = azurerm_subnet.AzureBastionSubnet.id
     public_ip_address_id = azurerm_public_ip.pip-uks-bas-01.id
   }
+}
+
+resource "azurerm_virtual_network" "vnet-uks-bastion-01" {
+  name                = "vnet-uks-bastion-01"
+  location            = azurerm_resource_group.rg-uks-bas-01.location
+  resource_group_name = azurerm_resource_group.rg-uks-bas-01.name
+  address_space       = ["10.30.0.0/16"]
+}
+
+resource "azurerm_subnet" "AzureBastionSubnet" {
+  name                 = "AzureBastionSubnet"
+  virtual_network_name = azurerm_virtual_network.vnet-uks-bastion-01.name
+  resource_group_name  = azurerm_resource_group.rg-uks-bas-01.name
+  address_prefixes     = ["10.30.1.0/24"]
 }
