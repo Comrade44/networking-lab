@@ -22,5 +22,5 @@ For outbound internet access via the hub, some requirements must be met:
 
 ![](./4.png)
 
-For communication between the 
+For communication between the spokes, an additional step needs to be taken. The peerings need to allow forwarded traffic, and for testing purposes, port 22 ssh needs to be allowed through the firewall.
 
