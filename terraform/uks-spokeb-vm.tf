@@ -1,24 +1,24 @@
-resource "azurerm_resource_group" "rg-uks-spokea-vm-01" {
-  name     = "rg-uks-spokea-vm-01"
+resource "azurerm_resource_group" "rg-uks-spokeb-vm-01" {
+  name     = "rg-uks-spokeb-vm-01"
   location = "uksouth"
 }
 
-resource "azurerm_network_interface" "nic-uks-spokea-01" {
-  name                = "nic-uks-spokea-01"
-  location            = azurerm_resource_group.rg-uks-spokea-vm-01.location
-  resource_group_name = azurerm_resource_group.rg-uks-spokea-vm-01.name
+resource "azurerm_network_interface" "nic-uks-spokeb-01" {
+  name                = "nic-uks-spokeb-01"
+  location            = azurerm_resource_group.rg-uks-spokeb-vm-01.location
+  resource_group_name = azurerm_resource_group.rg-uks-spokeb-vm-01.name
   ip_configuration {
     name                          = "public"
-    subnet_id                     = azurerm_subnet.vnet-uks-spokea-01-snet-01.id
+    subnet_id                     = azurerm_subnet.vnet-uks-spokeb-01-snet-01.id
     private_ip_address_allocation = "Dynamic"
   }
 }
 
-resource "azurerm_linux_virtual_machine" "vm-uks-spokea-01" {
-  name                  = "vm-uks-spokea-01"
-  location              = azurerm_resource_group.rg-uks-spokea-vm-01.location
-  resource_group_name   = azurerm_resource_group.rg-uks-spokea-vm-01.name
-  network_interface_ids = [azurerm_network_interface.nic-uks-spokea-01.id]
+resource "azurerm_linux_virtual_machine" "vm-uks-spokeb-01" {
+  name                  = "vm-uks-spokeb-01"
+  location              = azurerm_resource_group.rg-uks-spokeb-vm-01.location
+  resource_group_name   = azurerm_resource_group.rg-uks-spokeb-vm-01.name
+  network_interface_ids = [azurerm_network_interface.nic-uks-spokeb-01.id]
   size                  = "Standard_B1s"
   os_disk {
     storage_account_type = "Standard_LRS"
