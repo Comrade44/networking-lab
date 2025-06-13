@@ -36,3 +36,19 @@ resource "azurerm_subnet" "AzureBastionSubnet" {
   resource_group_name  = azurerm_resource_group.rg-uks-bas-01.name
   address_prefixes     = ["10.30.1.0/24"]
 }
+
+resource "azurerm_virtual_network_peering" "bastion-spokea" {
+  name                      = "bastion-spokea"
+  resource_group_name       = azurerm_resource_group.rg-uks-bas-01.name
+  virtual_network_name      = azurerm_virtual_network.vnet-uks-bastion-01.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet-uks-spokea-01.id
+  allow_forwarded_traffic   = true
+}
+
+resource "azurerm_virtual_network_peering" "spokea-bastion" {
+  name                      = "spokea-bastion"
+  resource_group_name       = azurerm_resource_group.rg-uks-bas-01.name
+  virtual_network_name      = azurerm_virtual_network.vnet-uks-spokea-01.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet-uks-bastion-01.id
+  allow_forwarded_traffic   = true
+}
