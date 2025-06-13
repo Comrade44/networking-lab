@@ -7,14 +7,14 @@ resource "azurerm_virtual_network" "vnet-uks-spokeb-01" {
   name                = "vnet-uks-spokeb-01"
   location            = azurerm_resource_group.rg-uks-spokeb-net-01.location
   resource_group_name = azurerm_resource_group.rg-uks-spokeb-net-01.name
-  address_space       = ["10.10.0.0/16"]
+  address_space       = ["10.20.0.0/16"]
 }
 
 resource "azurerm_subnet" "vnet-uks-spokeb-01-snet-01" {
   name                 = "vnet-uks-spokeb-01-snet-01"
   virtual_network_name = azurerm_virtual_network.vnet-uks-spokeb-01.name
   resource_group_name  = azurerm_resource_group.rg-uks-spokeb-net-01.name
-  address_prefixes     = ["10.10.1.0/24"]
+  address_prefixes     = ["10.20.1.0/24"]
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsg-uks-spokeb-01-snet-01" {
