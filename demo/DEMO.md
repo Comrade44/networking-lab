@@ -20,7 +20,7 @@ For outbound internet access via the hub, some requirements must be met:
 2. Peerings must exist between the spokes and the hub
 3. A default route must be created on each subnet pointing to the firewall
 
-
+![](./4.png)
 
 For communication between the 
 
