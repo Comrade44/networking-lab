@@ -7,6 +7,9 @@ resource "azurerm_firewall" "azfw-uks-net-01" {
   virtual_hub {
     virtual_hub_id = azurerm_virtual_hub.vhub-uks-01.id
   }
+  ip_configuration {
+    name = "azfw-hub-uks"
+  }
 }
 
 resource "azurerm_firewall_network_rule_collection" "spoke-networks" {
