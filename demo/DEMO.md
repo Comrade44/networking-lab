@@ -26,3 +26,5 @@ For communication between the spokes, an additional step needs to be taken. The 
 
 # Hub NAT Gateway
 Adding a NAT gateway in front of a hub firewall, whilst adding cost, brings some advantages. Azure Firewall allows 2496 SNAT ports per public IP address, whereas NAT gateway provides 64,512. This has the advantage of allowing more outbound connections from distinct services (e.g. microservices), as well as having fewer public IPs to manage.
+
+![](./5.png)
