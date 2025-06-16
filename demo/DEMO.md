@@ -28,3 +28,9 @@ For communication between the spokes, an additional step needs to be taken. The 
 Adding a NAT gateway in front of a hub firewall, whilst adding cost, brings some advantages. Azure Firewall allows 2496 SNAT ports per public IP address, whereas NAT gateway provides 64,512. This has the advantage of allowing more outbound connections from distinct services (e.g. microservices), as well as having fewer public IPs to manage.
 
 ![](./5.png)
+
+# Virtual WAN
+Azure Virtual WAN simplifies the management of vnets and routing in a hub-and-spoke topology (and other topologies):
+- Routes are created and propagated automatically, including for default internet-bound traffic
+- Peerings are created and managed automatically as spokes are added to the hub
+
