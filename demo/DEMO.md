@@ -24,3 +24,5 @@ For outbound internet access via the hub, some requirements must be met:
 
 For communication between the spokes, an additional step needs to be taken. The peerings need to allow forwarded traffic, and for testing purposes, port 22 ssh needs to be allowed through the firewall.
 
+# Hub NAT Gateway
+Adding a NAT gateway in front of a hub firewall, whilst adding cost, brings some advantages. Azure Firewall allows 2496 SNAT ports per public IP address, whereas NAT gateway provides 64,512. This has the advantage of allowing more outbound connections from distinct services (e.g. microservices), as well as having fewer public IPs to manage.
