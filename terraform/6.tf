@@ -22,10 +22,12 @@ resource "azurerm_virtual_hub_connection" "spokea-vhub-uks" {
   name                      = "spokea-vhub-uks"
   virtual_hub_id            = azurerm_virtual_hub.vhub-uks-01.id
   remote_virtual_network_id = azurerm_virtual_network.vnet-uks-spokea-01.id
+  internet_security_enabled = true
 }
 
 resource "azurerm_virtual_hub_connection" "spokeb-vhub-uks" {
   name                      = "spokeb-vhub-uks"
   virtual_hub_id            = azurerm_virtual_hub.vhub-uks-01.id
   remote_virtual_network_id = azurerm_virtual_network.vnet-uks-spokeb-01.id
+  internet_security_enabled = true
 }
