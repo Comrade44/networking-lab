@@ -36,3 +36,9 @@ Azure Virtual WAN simplifies the management of vnets and routing in a hub-and-sp
 - Scales better for multi-region WANs, as it removes the need for multiple peerings and UDRs in code
 
 ![](./6.png)
+
+# vWAN with Firewall
+
+Adding a firewall to a VWAN hub provides outbound connectivity. In order to specify a default route outbound via the firewall for connected spokes, a "routing intent" must be configured.
+
+![](./7.png)
