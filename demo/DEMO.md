@@ -34,3 +34,5 @@ Azure Virtual WAN simplifies the management of vnets and routing in a hub-and-sp
 - Routes are created and propagated automatically, including for default internet-bound traffic
 - Peerings are created and managed automatically as spokes are added to the hub
 - Scales better for multi-region WANs, as it removes the need for multiple peerings and UDRs in code
+
+![](./6.png)
