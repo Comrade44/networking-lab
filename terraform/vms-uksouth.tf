@@ -55,7 +55,7 @@ resource "azurerm_windows_virtual_machine" "vm-uks" {
 }
 
 resource "azurerm_virtual_machine_extension" "web_server_install" {
-  for_each                   = azurerm_windows_virtual_machine.vm-uks
+  for_each                   = tomap(azurerm_windows_virtual_machine.vm-uks)
   name                       = "${each.value.name}-wsi"
   virtual_machine_id         = each.value.id
   publisher                  = "Microsoft.Compute"
