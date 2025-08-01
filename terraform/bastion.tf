@@ -44,3 +44,10 @@ resource "azurerm_virtual_network_peering" "bastion-spokea" {
   remote_virtual_network_id = azurerm_virtual_network.vnet-uks.id
   allow_forwarded_traffic   = true
 }
+
+resource "azurerm_virtual_network_peering" "spokea-bastion" {
+  name                      = "spokea-bastion"
+  resource_group_name       = azurerm_resource_group.rg-uks-vm.name
+  virtual_network_name      = azurerm_virtual_network.vnet-uks.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet-uks-bastion-01.id
+}
