@@ -61,15 +61,6 @@ resource "azurerm_windows_virtual_machine" "vm-uks-01" {
   }
 
   provision_vm_agent = true
-
-  custom_data = base64encode(<<-EOF
-    <powershell>
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
-      remove-item C:\inetpub\wwwroot\iisstart.htm
-      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
-    </powershell>
-  EOF
-  )
 }
 
 resource "azurerm_windows_virtual_machine" "vm-uks-02" {
@@ -94,13 +85,20 @@ resource "azurerm_windows_virtual_machine" "vm-uks-02" {
   }
 
   provision_vm_agent = true
+}
 
-  custom_data = base64encode(<<-EOF
-    <powershell>
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
-      remove-item C:\inetpub\wwwroot\iisstart.htm
-      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
-    </powershell>
-  EOF
-  )
+resource "azurerm_virtual_machine_extension" "web_server_install" {
+  for_each                   = [azurerm_windows_virtual_machine.vm-uks-01, azurerm_windows_virtual_machine.vm-uks-02]
+  name                       = "${each.value.name}-wsi"
+  virtual_machine_id         = each.value.id
+  publisher                  = "Microsoft.Compute"
+  type                       = "CustomScriptExtension"
+  type_handler_version       = "1.8"
+  auto_upgrade_minor_version = true
+
+  settings = <<SETTINGS
+    {
+      "commandToExecute": "powershell -ExecutionPolicy Unrestricted Install-WindowsFeature -Name Web-Server -IncludeAllSubFeature -IncludeManagementTools"
+    }
+  SETTINGS
 }
